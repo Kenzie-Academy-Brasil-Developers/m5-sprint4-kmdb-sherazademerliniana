@@ -4,9 +4,15 @@ from django.db import models
 
 # Create your models here.
 class User(AbstractUser):
+    username = models.CharField(
+        max_length=20,
+        unique=True,
+    )
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=127, unique=True)
     birthdate = models.DateField()
-    bio = models.CharField(
-        max_length=500,
+    bio = models.TextField(
         blank=True,
         null=True,
     )
